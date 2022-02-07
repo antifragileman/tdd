@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.9.1-slim-buster
+FROM python:3.9
 
 # set working directory
 RUN mkdir -p /usr/src/app
@@ -22,7 +22,10 @@ RUN pip3 install -r requirements.txt
 # new
 # copy entrypoint.sh
 COPY ./entrypoint.sh /usr/src/app/entrypoint.sh
+RUN ls -al
 RUN chmod +x /usr/src/app/entrypoint.sh
+RUN apt install -y netcat
+
 
 # add app
 COPY . .
